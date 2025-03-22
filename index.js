@@ -1,9 +1,15 @@
 function fetchBooks() {
-  fetch("https://anapioficeandfire.com/api/books")
+   return fetch("https://anapioficeandfire.com/api/books")
   .then (response => response.json())
-  .then(data => renderBooks(data))
-  .catch(error => console.error("Error fetching books:", error));
+  .then(data => {
+  renderBooks(data);
+return data;})
+  .catch(error =>
+    {console.error("Error fetching books:", error);
+throw error;}
+);
 }
+
 
 function renderBooks(books) {
   const main = document.querySelector('main');
